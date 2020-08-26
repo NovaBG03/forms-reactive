@@ -12,7 +12,12 @@
               class="form-control">
             <span *ngIf="singUpForm.get('userData.username').invalid && singUpForm.get('userData.username').touched"
                   class="help-block">
-            Please enter a valid Username
+              <span *ngIf="singUpForm.get('userData.username').errors['nameIsForbidden']">
+                This username is forbidden
+              </span>
+              <span *ngIf="singUpForm.get('userData.username').errors['required']">
+                Please enter a username
+              </span>
           </span>
           </div>
           <div class="form-group">
