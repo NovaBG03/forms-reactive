@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
+import {log} from 'util';
 
 
 @Component({
@@ -24,10 +25,17 @@ export class AppComponent implements OnInit {
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
     });
+
+    this.singUpForm.patchValue({
+      userData: {
+        username: 'Ivan'
+      }
+    });
   }
 
   onSubmit() {
     console.log(this.singUpForm);
+    this.singUpForm.reset({'gender': 'male'});
   }
 
   onAddHobby() {
